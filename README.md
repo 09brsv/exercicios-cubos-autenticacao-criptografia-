@@ -63,6 +63,7 @@ Para usar a API, envie solicitações HTTP para esses endpoints usando um client
 
 <br>
 ## Exemplo de requisição para cadastrar um pokemon
+
 ```
 {
     "nome": "Pikachu",
