@@ -1,65 +1,68 @@
 ![](https://i.imgur.com/xG74tOh.png)
 
-# Exercício 01
 
 ## Criação de API com autenticação
 
-Você acaba de receber uma proposta como freelancer para construir uma API que irá catalogar **Pokemons**. Entretanto, não se trata de uma simples API, pois ela possuirá autenticação para que cada usuario logado possa catalogar seus **Pokemons**.
+## Descrição :
 
-Sendo assim, vamos aos requisitos proposto pelo contratante.
+Este é um projeto para criar uma API RESTful com autenticação e criptografia de senha em NodeJs.
 
-1 - Deverá existir um banco de dados chamado `catalogo_pokemons` com as tabelas descritas abaixo e todo código de criação das tabelas deverá se colocado no arquivo `dump.sql`
+## Instalação:
 
-a) Tabela `usuarios` com os campos:
+Clone este repositório na sua máquina: 
+```git
+git clone https://github.com/09brsv/exercicios-cubos-autenticacao-criptografia-.git
+```
 
-- id - identificador único do usuário como chave primaria e auto incremento;
-- nome - (obrigatório)
-- email - (obrigatório e único)
-- senha - (obrigatório)
+Entre no diretório do projeto: 
+```git
+cd exercicios-cubos-autenticacao-criptografia
+```
+Instale as dependências: 
+```git
+npm install
+```
+ou
+```git
+yarn
+```
+Execute o projeto: 
+```git
+npm run dev
+```
+ou
+```git
+yarn dev
+```
+<br>
 
-b) Tabela `pokemons` com os campos
+## Como Usar :
 
-- id - identificador único do pokemon como chave primaria e auto incremento;
-- usuario_id - (obrigatório)
-- nome - (obrigatório)
-- habilidades - (obrigatótio)
-- imagem
-- apelido
+Para usar a API, você precisa:
+1. Ter um gerenciador de banco de dados SQL como por exemplo o [beeckeeper](https://www.beekeeperstudio.io/).
+2. Selecionar o banco de dados postgres, pegando as credencias do seu banco
+3. Criar um arquivo .env ***"por fora da pasta src"*** e preencher devidamente as variáveis de ambiente que estão exemplificadas no arquivo .env.example
+4. Enviar solicitações HTTP para os endpoints disponíveis.
 
-2 - Para a entidade `usuarios` deverá ser implementado as seguintes funcionalidades.
+### Endpoints
 
-a) Cadastro de usuário
+Aqui estão os endpoints disponíveis na API:
 
-- A senha do usuário deverá ser criptografada usando a biblioteca `bcrypt` antes de salvar o cadastro.
+- `GET /pokemons`: Retorna uma lista com as informações de todos os pokemons do usuário logado.
+- `GET /pokemons/:id`: Retorna as informações de um pokemon com o ID especificado.
+- `POST /usuarios`: Cadastra um usuário no banco de dados com base nos dados fornecidos no corpo da solicitação.
+- `POST /login`: Faz a autenticação do usuário no banco de dados com base nos dados fornecidos no corpo da solicitação.
+- `POST /pokemons`: Cria um novo pokemon com base nos dados fornecidos no corpo da solicitação.
+- `PATCH /pokemons/:id`: Atualiza uma ou mais informações do pokemon com o ID especificado com base nos dados fornecidos no corpo da solicitação.
+- `DELETE /pokemons/:id`: Remove o pokemon com o ID especificado.
 
-b) Login de usuário
 
-- Validar as credenciais do usuário usando a biblioteca `bcrypt`.
-- Gerar o token de autenticação com a biblioteca `jsonwebtoken`.
+Para usar a API, envie solicitações HTTP para esses endpoints usando um cliente HTTP, como o [Postman](https://www.postman.com/) ou o [Insomnia](https://insomnia.rest/download).
 
-3 - Para a entidade `pokemons` deverá ser implementado as seguintes funcionalidades.
 
-a) Cadastro do pokemons
 
-b) Atualização apenas do apelido do pokemon
-
-c) Listagem completa dos pokemons
-
-d) Listagem de apenas um pokemon filtrado pelo seu id
-
-e) Exclusão do pokemon
-
-É obrigatório para as funcionalidades da entidade `pokemons`:
-
-- Receber o token do header da requisição (_authorization_) no formato `Bearer Token` e validar o usuário logado em todos os endpoints.
-- O campo `usuario_id` não deve ser capturado do body da requisição. Deve ser obtido do token recebido no header.
-- No cadastro de pokemon, o campo `habilidades` deverá receber apenas uma string de habilidades separadas por vírgulas.
-- Na listagem de pokemons o campo `habilidades` deverá retornar um array de habilidades.
-
-_Obs.: É preciso realizar todas as validações necessárias para evitar erros no banco de dados_
-
-Exemplo do body para cadastro do pokemon:
-
+<br>
+## Exemplo de requisição para cadastrar um pokemon
 ```
 {
     "nome": "Pikachu",
@@ -69,7 +72,9 @@ Exemplo do body para cadastro do pokemon:
 }
 ```
 
-Exemplo de retorno na listagem de pokemons:
+<br>
+<br>
+## Exemplo de retorno na listagem de pokemons:
 
 ```
 [
@@ -93,12 +98,6 @@ Exemplo de retorno na listagem de pokemons:
 ```
 
 ---
+## Contato
 
-Preencha a checklist para finalizar o exercício:
-
-- [ ] Resolver o exercício revendo a aula se necessário
-- [ ] Adicionar as mudanças aos commits (`git add .` para adicionar todos os arquivos ou `git add nome_do_arquivo` para adicionar um arquivo específico)
-- [ ] Commitar a cada mudança significativa ou na finalização do exercício (`git commit -m "Mensagem do commit"`)
-- [ ] Pushar os commits no seu fork na origem (`git push origin nome-da-branch`)
-
-###### tags: `exercícios` `lógica` `banco de dados` `sql` `postgres`
+Se você tiver alguma dúvida ou sugestão sobre este projeto, sinta-se à vontade para entrar em contato comigo através do meu perfil no [GitHub](https://github.com/09brsv) ou no [Linkedin](https://www.linkedin.com/in/bruno-batista09brsv/)
